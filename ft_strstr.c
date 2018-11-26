@@ -12,31 +12,22 @@
 
 #include "libft.h"
 
-int		chek(char *str1, char *str2)
+char	*ft_strstr(const char *hst, const char *ndl)
 {
-	int i;
-	int k;
+	int	i;
+	int	j;
 
 	i = 0;
-	k = 0;
-	while (str2[i] != '\0')
+	while (hst[i] != '\0')
 	{
-		if (str1[i] == str2[k])
-			k++;
+		j = 0;
+		while (ndl[j] != '\0' && hst[i + j] == ndl[j])
+			j++;
+		if (ndl[j] == '\0')
+			return ((char*)hst + i);
 		i++;
 	}
-	if (k == i)
-		return (1);
-	return (0);
-}
-
-char	*ft_strstr(char *str, char *to_find)
-{
-	while (*str != '\0')
-	{
-		if (chek(str, to_find) == 1)
-			return (str);
-		str++;
-	}
+	if (ndl[0] == '\0')
+		return ((char*)hst);
 	return (0);
 }

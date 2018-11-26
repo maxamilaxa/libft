@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkopiika <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/03 17:47:36 by mkopiika          #+#    #+#             */
-/*   Updated: 2018/11/03 17:47:41 by mkopiika         ###   ########.fr       */
+/*   Created: 2018/11/13 19:23:03 by mkopiika          #+#    #+#             */
+/*   Updated: 2018/11/13 19:23:08 by mkopiika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putstr(char const *s)
 {
-	ft_memset(s, 0, n);
+	char	*str;
+	int		i;
+
+	str = (char*)s;
+	i = 0;
+	if (s)
+	{
+		while (str[i] != '\0')
+		{
+			ft_putchar(str[i]);
+			i++;
+		}
+	}
 }

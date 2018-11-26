@@ -12,23 +12,24 @@
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	unsigned int i;
+	char	*d;
+	char	*s;
+	size_t	i;
 
+	d = (char*)dst;
+	s = (char*)src;
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	while ((s[i] != '\0') && (i < len))
 	{
-		dest[i] = src[i];
+		d[i] = s[i];
 		i++;
 	}
-	if (src[i] == '\0' && dest[i] == '\0')
+	while (len > i)
 	{
-		while (dest[i] != '\0')
-		{
-			dest[i] = '\0';
-			i++;
-		}
+		d[i] = '\0';
+		i++;
 	}
-	return (dest);
+	return (dst);
 }

@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkopiika <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/03 17:47:36 by mkopiika          #+#    #+#             */
-/*   Updated: 2018/11/03 17:47:41 by mkopiika         ###   ########.fr       */
+/*   Created: 2018/11/26 13:29:13 by mkopiika          #+#    #+#             */
+/*   Updated: 2018/11/26 13:30:29 by mkopiika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strnew(size_t size)
 {
-	ft_memset(s, 0, n);
+	char *str;
+	size_t c;
+
+	c = 0;
+	str = (char*)malloc(sizeof(char) * (size + 1));
+	if (str != '\0')
+		{
+			while (size > c)
+				size--;
+			return (str = 0);
+		}
+	return (0);
 }

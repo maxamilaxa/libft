@@ -14,10 +14,10 @@
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char *str1;
-	char *str2;
-	int i;
-	int j;
+	char	*str1;
+	char	*str2;
+	int		i;
+	int		j;
 
 	str1 = (char*)s1;
 	str2 = (char*)s2;
@@ -27,7 +27,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 		i++;
 	}
 	j = 0;
-	while(str2[j] != '\0' && n > 0)
+	while (str2[j] != '\0' && n > 0)
 	{
 		str1[i] = str2[j];
 		j++;
@@ -35,5 +35,5 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 		n--;
 	}
 	str1[i] = '\0';
-		return(s1);
+	return (s1);
 }

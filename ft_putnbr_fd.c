@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkopiika <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 17:10:58 by mkopiika          #+#    #+#             */
-/*   Updated: 2018/11/16 17:11:01 by mkopiika         ###   ########.fr       */
+/*   Created: 2018/12/12 10:35:16 by mkopiika          #+#    #+#             */
+/*   Updated: 2018/12/12 10:35:18 by mkopiika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (ap)
+	if (fd != -1)
 	{
-		free(*ap);
-		*ap = NULL;
+		if (n == -2147483648)
+		{
+			ft_putchar_fd('-', fd);
+			ft_putchar_fd('2', fd);
+			ft_putnbr_fd(147483648, fd);
+		}
+		else if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			ft_putnbr_fd((n * -1), fd);
+		}
+		else if (n < 10)
+		{
+			ft_putchar_fd(((char)(n + '0')), fd);
+		}
+		else
+		{
+			ft_putnbr_fd((n / 10), fd);
+			ft_putchar_fd(((char)(n % 10 + '0')), fd);
+		}
 	}
 }

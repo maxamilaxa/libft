@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkopiika <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 17:10:58 by mkopiika          #+#    #+#             */
-/*   Updated: 2018/11/16 17:11:01 by mkopiika         ###   ########.fr       */
+/*   Created: 2018/12/05 14:13:01 by mkopiika          #+#    #+#             */
+/*   Updated: 2018/12/05 14:13:04 by mkopiika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (ap)
+	size_t	c;
+	size_t	i;
+	char	*dst;
+
+	if (!s || !f)
+		return (0);
+	c = ft_strlen(s);
+	dst = ft_strnew(c);
+	if (!dst)
+		return (0);
+	i = 0;
+	while (s[i] != '\0' && i < c)
 	{
-		free(*ap);
-		*ap = NULL;
+		dst[i] = f(s[i]);
+		i++;
 	}
+	dst[i] = '\0';
+	return (dst);
 }

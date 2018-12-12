@@ -12,15 +12,25 @@
 
 #include "libft.h"
 
-int		ft_atoi(char *str)
+int		ft_ifsim(char sim)
 {
-	int	res;
-	int m;
+	if (sim == '\t' || sim == ' ' || sim == '\n' || sim == '\v' ||
+				sim == '\f' || sim == '\r')
+		return (1);
+	return (0);
+}
 
-	res = 0;
+int		ft_atoi(const char *str)
+{
+	unsigned long int	num;
+	int					m;
+
+	num = 0;
 	m = 1;
-	while (*str && (*str <= 47))
+	while (*str && ft_ifsim(*str))
+	{
 		str++;
+	}
 	if ((*str == '-') || (*str == '+'))
 	{
 		if (*str == '-')
@@ -29,8 +39,12 @@ int		ft_atoi(char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		res = (res * 10) + (*str - '0');
+		num = (num * 10) + (*str - '0');
 		str++;
 	}
-	return (res * m);
+	if (num > 4294967295 && m == -1)
+		return (0);
+	else if (num > 4294967295 && m == 1)
+		return (-1);
+	return (num * m);
 }

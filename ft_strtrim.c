@@ -31,7 +31,7 @@ char	*ft_strtrim(char const *s)
 	if (bg > en)
 		return (ft_strnew(0));
 	dst = ft_strnew((en - bg) + 1);
-	if(!dst)
+	if (!dst)
 		return (NULL);
 	dst = dst + (en - bg) + 1;
 	*dst = '\0';

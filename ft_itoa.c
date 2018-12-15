@@ -12,59 +12,40 @@
 
 #include "libft.h"
 
-int 	ft_lenofi(int n)
+static int		ft_maxi(int n)
 {
-	int	r;
-
-	r = 0;
-	while (n)
-	{
-		r++;
-		n /= 10;
-	}
-	if (n <= 0)
-		r++;
-	else
-		r++;
-	return (r);
-
+	if (n == -2147483648)
+		return (147483648);
+	else if (n < 0)
+		return (n * -1);
+	return (n);
 }
 
-static char	*ft_itoa_wr(int n, int d, char *r)
+char			*ft_itoa(int n)
 {
-	int		n1;
+	int		nbr;
+	int		i;
+	char	*str;
 
-	n1 = n;
-	while (n / d == 0 && n != 0)
-		d /= 10;
-	while (d && n != 0)
-	{
-		if (n > 0)
-			*r = (char)((n1 / d) + '0');
-		else
-			*r = (char)(((n1 / d) * (-1)) + '0');
-		n1 -= (n1 / d) * d;
-		r++;
-		d /= 10;
-	}
-	return (r);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*new;
-	char	*buff;
-	int		d;
-
-	new = ft_strnew(ft_lenofi(n));
-	if (!new)
-		return (NULL);
-	buff = r;
-	d = 1000000000;
-	if (n == 0)
-		*new = '0';
+	nbr = n;
+	i = 1;
+	while ((nbr = nbr / 10))
+		i++;
 	if (n < 0)
-		r++[0] = '-';
-	new = ft_itoa_wr(n, d, r);
-	return (buff);
+		i++;
+	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	nbr = 0;
+	if (n < 0)
+		str[nbr++] = '-';
+	if (n == -2147483648)
+		str[nbr++] = '2';
+	n = ft_maxi(n);
+	str[i] = '\0';
+	while (--i >= nbr)
+	{
+		str[i] = n % 10 + '0';
+		n = n / 10;
+	}
+	return (str);
 }

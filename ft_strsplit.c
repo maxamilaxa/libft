@@ -12,37 +12,33 @@
 
 #include "libft.h"
 
-int		ft_countofw(char const *str, char c)
+int				ft_countofw(char const *s, char c)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while (*str)
+	while (*s)
 	{
-		if (*str != c)
+		if (*s == 0 && *s != c)
 			i++;
-		while (*str && *str == c)
-			str++;
-		while (*str && *str != c)
-			str++;
+		else if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
+			i++;
+		s++;
 	}
 	return (i);
 }
 
-int		ft_lenofw(char const *str, char c)
+size_t			ft_lenofs(const char *s, char c)
 {
-	int		ln;
+	size_t	i;
 
-	ln = 0;
-	while (*str && *str != c)
-	{
-		ln++;
-		str++;
-	}
-	return (ln);
+	i = 0;
+	while (*s && *s != c)
+		i++;
+	return (i);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**buff;
 	int		word;
@@ -50,10 +46,20 @@ char	**ft_strsplit(char const *s, char c)
 
 	word = ft_countofw(s,c);
 	i = 0;
-	buff = (char**)malloc(sizeof(char*) * (word + 1));
-	if (!buff)
-		return (0);
-
-	buff[i] = NULL;
+	if (!(buff = (char**)malloc(sizeof(char*) * (word + 1))))
+		return (NULL);
+	if (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			if(!(*buff = ft_strsub(s, 0, ft_lenofs(s, c))))
+				return (NULL);
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	*buff = NULL;
 	return (buff);
 }

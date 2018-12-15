@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_ifsim(char sim)
+static int		ft_ifsim(const char sim)
 {
 	if (sim == '\t' || sim == ' ' || sim == '\n' || sim == '\v' ||
 				sim == '\f' || sim == '\r')
@@ -20,7 +20,7 @@ int		ft_ifsim(char sim)
 	return (0);
 }
 
-int		ft_atoi(const char *str)
+int				ft_atoi(const char *str)
 {
 	unsigned long int	num;
 	int					m;

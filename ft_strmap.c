@@ -12,18 +12,18 @@
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char			*ft_strmap(char const *s, char (*f)(char))
 {
 	size_t	c;
 	size_t	i;
 	char	*dst;
 
 	if (!s || !f)
-		return (0);
+		return (NULL);
 	c = ft_strlen(s);
 	dst = ft_strnew(c);
 	if (!dst)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0' && i < c)
 	{

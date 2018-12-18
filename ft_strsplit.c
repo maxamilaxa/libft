@@ -12,43 +12,49 @@
 
 #include "libft.h"
 
-int				ft_countofw(char const *s, char c)
+static int	ft_countofw(char const *s, char c)
 {
 	int		i;
 
 	i = 0;
-	while (*s)
+	while (*s != '\0')
 	{
-		if (*s == 0 && *s != c)
+		if (*s != c)
 			i++;
-		else if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
-			i++;
-		s++;
+		while (*s != c && *s != '\0')
+			s++;
+		while (*s == c && *s != '\0')
+			s++;
 	}
 	return (i);
 }
 
-size_t			ft_lenofs(const char *s, char c)
+static	size_t	ft_lenofs(const char *s, char c)
 {
 	size_t	i;
 
 	i = 0;
 	while (*s && *s != c)
+	{
 		i++;
+		s++;
+	}
 	return (i);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**buff;
-	int		word;
+	char 	**ret;
 	int		i;
 
-	word = ft_countofw(s,c);
 	i = 0;
-	if (!(buff = (char**)malloc(sizeof(char*) * (word + 1))))
+	if (!s)
 		return (NULL);
-	if (*s)
+	if (!(buff = (char**)malloc(sizeof(char*) * (ft_countofw(s,c) + 1))))
+		return (NULL);
+	ret = buff;
+	while (*s)
 	{
 		while (*s && *s == c)
 			s++;
@@ -56,10 +62,11 @@ char			**ft_strsplit(char const *s, char c)
 		{
 			if(!(*buff = ft_strsub(s, 0, ft_lenofs(s, c))))
 				return (NULL);
-			while (*s && *s != c)
-				s++;
+			buff++;
 		}
+		while (*s && *s != c)
+				s++;
 	}
 	*buff = NULL;
-	return (buff);
+	return (ret);
 }

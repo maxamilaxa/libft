@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		ft_maxi(int n)
+static int			ft_ifmax(int n)
 {
 	if (n == -2147483648)
 		return (147483648);
@@ -21,31 +21,31 @@ static int		ft_maxi(int n)
 	return (n);
 }
 
-char			*ft_itoa(int n)
+char				*ft_itoa(int n)
 {
+	char	*s;
 	int		nbr;
 	int		i;
-	char	*str;
-
+	
 	nbr = n;
 	i = 1;
 	while ((nbr = nbr / 10))
 		i++;
 	if (n < 0)
 		i++;
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+	if (!(s = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	nbr = 0;
 	if (n < 0)
-		str[nbr++] = '-';
+		s[nbr++] = '-';
 	if (n == -2147483648)
-		str[nbr++] = '2';
-	n = ft_maxi(n);
-	str[i] = '\0';
+		s[nbr++] = '2';
+	n = ft_ifmax(n);
+	s[i] = '\0';
 	while (--i >= nbr)
 	{
-		str[i] = n % 10 + '0';
+		s[i] = n % 10 + '0';
 		n = n / 10;
 	}
-	return (str);
+	return (s);
 }

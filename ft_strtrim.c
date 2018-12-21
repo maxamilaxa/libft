@@ -30,8 +30,7 @@ char				*ft_strtrim(char const *s)
 		en--;
 	if (bg > en)
 		return (ft_strnew(0));
-	dst = ft_strnew((en - bg) + 1);
-	if (!dst)
+	if (!(dst = ft_strnew((en - bg) + 1)))
 		return (NULL);
 	dst = dst + (en - bg) + 1;
 	*dst = '\0';

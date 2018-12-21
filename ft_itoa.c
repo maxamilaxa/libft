@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int			ft_ifmax(int n)
+static int		ft_ifmax(int n)
 {
 	if (n == -2147483648)
 		return (147483648);
@@ -21,12 +21,12 @@ static int			ft_ifmax(int n)
 	return (n);
 }
 
-char				*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*s;
-	int		nbr;
-	int		i;
-	
+	char		*s;
+	int			nbr;
+	int			i;
+
 	nbr = n;
 	i = 1;
 	while ((nbr = nbr / 10))

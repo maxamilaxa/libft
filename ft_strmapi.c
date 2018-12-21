@@ -21,13 +21,12 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	c = ft_strlen(s);
-	dst = ft_strnew(c);
-	if (!dst)
+	if (!(dst = ft_strnew(c)))
 		return (NULL);
 	i = 0;
 	while (s[i] != '\0' && i < c)
 	{
-		dst[i] = f(i, s[i]);
+		dst[i] = f((unsigned int)i, s[i]);
 		i++;
 	}
 	dst[i] = '\0';

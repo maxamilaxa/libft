@@ -18,14 +18,13 @@ char			*ft_strmap(char const *s, char (*f)(char))
 	size_t	i;
 	char	*dst;
 
-	if (!s || !f)
+	if (s == NULL || !*s || !*f)
 		return (NULL);
 	c = ft_strlen(s);
-	dst = ft_strnew(c);
-	if (!dst)
+	if (!(dst = ft_strnew(c)))
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && i < c)
+	while (s[i] != '\0')
 	{
 		dst[i] = f(s[i]);
 		i++;

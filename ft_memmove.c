@@ -21,20 +21,22 @@ void				*ft_memmove(void *dest, const void *src, size_t len)
 	d = (char*)dest;
 	s = (char*)src;
 	i = 0;
-	if ((s < d) && (s + (len - 1) > d))
+	if (!src && !dest)
+		return (NULL);
+	if (s < d)
 	{
 		s = s + (len - 1);
 		d = d + (len - 1);
-		while (len)
-		{
+		while (len-- > 0)
 			*d-- = *s--;
-			len--;
-		}
 	}
-	while (len-- > 0)
+	else
 	{
-		d[i] = s[i];
-		i++;
+		while (len-- > 0)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
 	return (dest);
 }

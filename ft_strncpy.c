@@ -18,7 +18,7 @@ char			*ft_strncpy(char *dst, const char *src, size_t len)
 	char	*sour;
 	size_t	i;
 
-	dest = (char*)dst;
+	dest = dst;
 	sour = (char*)src;
 	i = 0;
 	while ((sour[i] != '\0') && (i < len))

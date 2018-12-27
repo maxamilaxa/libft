@@ -18,17 +18,20 @@ char			*ft_strnstr(const char *hst, const char *ndl, size_t len)
 	size_t		l;
 
 	c = 0;
+	if (!*ndl)
+		return ((char*)hst);
 	l = ft_strlen(ndl);
 	if (!*hst)
 		return (NULL);
 	while (*hst && (len - c) >= l && c < len)
 	{
-		if (ft_strncmp(hst, ndl, l) == 0)
-			return ((char*)hst);
+		if (*hst == *ndl)
+		{
+			if (ft_strncmp(hst, ndl, l) == 0)
+				return ((char*)hst);
+		}
 		hst++;
 		c++;
 	}
-	if (*ndl == '\0')
-		return ((char*)hst);
 	return (NULL);
 }

@@ -20,6 +20,6 @@ void			*ft_memdup(const void *mem, size_t size)
 	if (dup == NULL)
 		return (NULL);
 	else
-		memcpy(dup, mem, size);
+		ft_memcpy(dup, mem, size);
 	return (dup);
 }

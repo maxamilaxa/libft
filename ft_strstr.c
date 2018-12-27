@@ -12,35 +12,21 @@
 
 #include "libft.h"
 
-static int			ft_cmp(const char *h, const char *n)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (n[j] != '\0' && h[i] != '\0')
-	{
-		if (h[i] == n[j])
-			j++;
-		i++;
-	}
-	if (i == j)
-		return (1);
-	return (0);
-}
-
 char				*ft_strstr(const char *hst, const char *ndl)
 {
+	size_t	len;
+
 	if (!*ndl)
 		return ((char*)hst);
+	len = ft_strlen(ndl);
 	while (*hst != '\0')
 	{
-		if (ft_cmp(hst, ndl) == 1)
-			return ((char*)hst);
+		if (*hst == *ndl)
+		{
+			if (ft_strncmp(hst, ndl, len) == 0)
+				return ((char*)hst);
+		}
 		hst++;
 	}
-	if (*ndl == '\0')
-		return ((char*)hst);
 	return (NULL);
 }

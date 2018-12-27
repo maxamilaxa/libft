@@ -19,13 +19,11 @@ char				*ft_strcat(char *s1, const char *s2)
 	int		i;
 	int		j;
 
-	str1 = (char*)s1;
+	str1 = s1;
 	str2 = (char*)s2;
 	i = 0;
 	while (str1[i] != '\0')
-	{
 		i++;
-	}
 	j = 0;
 	while (str2[j] != '\0')
 	{

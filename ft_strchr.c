@@ -29,5 +29,5 @@ char				*ft_strchr(const char *s, int c)
 	}
 	if (sim == '\0')
 		return (chr + i);
-	return (0);
+	return (NULL);
 }

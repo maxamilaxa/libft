@@ -26,9 +26,7 @@ void				ft_putnbr(int n)
 		ft_putnbr(n * -1);
 	}
 	else if (n < 10)
-	{
 		ft_putchar((char)(n + '0'));
-	}
 	else
 	{
 		ft_putnbr(n / 10);

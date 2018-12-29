@@ -29,7 +29,7 @@ static int			ft_countofw(char const *s, char c)
 	return (i);
 }
 
-static	size_t		ft_lenofs(const char *s, char c)
+static	size_t		ft_lenofs(char const *s, char c)
 {
 	size_t	i;
 

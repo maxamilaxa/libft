@@ -26,17 +26,15 @@ char				*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup((char*)s1));
 	if (!(str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
 		return (NULL);
-	i = 0;
-	while (i < ft_strlen(s1))
-	{
+	i = -1;
+	while (++i < ft_strlen(s1))
 		*(str + i) = *(s1 + i);
-		i++;
-	}
 	j = 0;
 	while (j < ft_strlen(s2))
 	{
 		*(str + i++) = *(s2 + j);
 		j++;
 	}
+	str[i] = '\0';
 	return (str);
 }
